@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="stylesheet"
+		href="./Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/css/pickmeup.css"
+		type="text/css" />
+
+	<script type="text/javascript"
+		src="./Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/js/pickmeup.js">
+	</script>
+	<title>Search</title>
+</head>
+
+<body>
+	<div class="returnhome">
+	</div>
+	<header>
+
+		<div class="logo">
+			<img src="./img/logo.PNG" alt="">
+			<div class="triangle_logo"> </div>
+		</div>
+
+		<div class="curreny">
+			<span>$</span>
+			<span>USD</span>
+		</div>
+		<div class="enter">
+			<button class="btn-enter">register</button>
+			<button class="btn-enter">sing up </button>
+		</div>
+
+	</header>
+	<div class="container">
+		<form class="search">
+
+			<div class="search_input">
+				<input type="string" name="city[]" id='city' value="" autocomplete="off">
+				<span class="close"></span>
+				<ul class="searchCityResult">
+					<li>Москва</li>
+					<li>Санкт-Петербург</li>
+					<li>Киев</li>
+					<li>Волгоград</li>
+					<li>Челябинск</li>
+					<li>Чебоксары</li>
+				</ul>
+			</div>
+
+
+			<input class="search_input" type="text" name="date[]" id='fromDate' value="">
+			<input class="search_input" type="text" name="date[]" id='toDate' value="">
+
+			<div class="search_input" id='countOfGuest' type="number" min=0 max=10 id='count' value="" readonly>
+
+				<label class="number-adult">
+					<span>0</span>
+					-adult
+				</label>
+				<label for="" class="number-children">
+					<span>0</span>
+					-children
+					
+
+				</label>
+
+				<div class="search_input-result">
+					<div class="result-count" id='adult'>
+						adult
+						<input type="button" value="+">
+						<span id="adultCount" name="adult[]">0 </span>
+						<input type="button" value="-">
+					</div>
+					<div class="result-count " id='children'>
+						children
+						<input type="button" value="+">
+						<span id="childrenCount" name="children[]">0 </span>
+						<input type="button" value="-">
+						
+					</div>
+					<div id="childrenAge">age-<span></span></div>
+					
+				</div>
+
+			</div>
+
+			<input type="submit" class="submit" value="search">ы
+		</form>
+	</div>
+	<div class="content">
+		<div class="properties">
+
+			<div>
+				<img class="map" src="./img/map.png" alt="">
+			</div>
+
+			<form class="sort">
+				<p class="properties_title">Sort by</p>
+				<ul>
+					<li><input name="sort[]" value="1" type="radio" id="1"><label for="1">lorem</label></li>
+					<li><input name="sort[]" value="2" type="radio" id="2"><label for="2">lorem</label></li>
+					<li><input name="sort[]" value="3" type="radio" id="3"><label for="3">lorem</label></li>
+					<li><input name="sort[]" value="4" type="radio" id="4"><label for="4">lorem</label></li>
+					<li><input name="sort[]" value="5" type="radio" id="5"><label for="5">lorem</label></li>
+					<li><input name="sort[]" value="6" type="radio" id="6"><label for="6">lorem</label></li>
+					<li><input name="sort[]" value="7" type="radio" id="7"><label for="7">lorem</label></li>
+				</ul>
+			</form>
+			<p class="properties_title">Filter by</p>
+
+			<form class="filter">
+
+				<p class="filter_title">popular</p>
+				<ul>
+					<li><input name="popular[]" value="1" type="checkbox" id="8"><label for="8">lorem</label></li>
+					<li><input name="popular[]" value="1" type="checkbox" id="9"><label for="9">lorem</label></li>
+					<li><input name="popular[]" value="1" type="checkbox" id="10"><label for="10">lorem</label></li>
+					<li><input name="popular[]" value="1" type="checkbox" id="11"><label for="11">lorem</label></li>
+					<li><input name="popular[]" value="1" type="checkbox" id="12"><label for="12">lorem</label></li2>
+					<li><input name="popular[]" value="1" type="checkbox" id="13"><label for="13">lorem</label></li>
+					<li><input name="popular[]" value="1" type="checkbox" id="14"><label for="14">lorem</label></li>			</ul>
+			</form>
+			<form class="filter">
+
+				<p class="filter_title">class</p>
+				<ul>
+					<li><input name="class[]" value="1" type="checkbox" id="15"><label for="15">lorem</label></li>
+					<li><input name="class[]" value="1" type="checkbox" id="16"><label for="16">lorem</label></li>
+					<li><input name="class[]" value="1" type="checkbox" id="17"><label for="17">lorem</label></li>
+					<li><input name="class[]" value="1" type="checkbox" id="18"><label for="18">lorem</label></li>
+					<li><input name="class[]" value="1" type="checkbox" id="19"><label for="19">lorem</label></li2>
+					<li><input name="class[]" value="1" type="checkbox" id="20"><label for="20">lorem</label></li>
+					<li><input name="class[]" value="1" type="checkbox" id="21"><label for="21">lorem</label></li>			</ul>
+			</form>
+			<form class="filter">
+
+				<p class="filter_title">budget</p>
+				<ul>
+					<li><input name="budget[]" value="1" type="checkbox" id="22"><label for="22">lorem</label></li>
+					<li><input name="budget[]" value="1" type="checkbox" id="23"><label for="23">lorem</label></li>
+					<li><input name="budget[]" value="1" type="checkbox" id="24"><label for="24">lorem</label></li>
+					<li><input name="budget[]" value="1" type="checkbox" id="25"><label for="25">lorem</label></li>
+					<li><input name="budget[]" value="1" type="checkbox" id="26"><label for="26">lorem</label></li2>
+					<li><input name="budget[]" value="1" type="checkbox" id="27"><label for="27">lorem</label></li>
+					<li><input name="budget[]" value="1" type="checkbox" id="28"><label for="28">lorem</label></li>			</ul>
+			</form>
+
+
+
+		</div>
+
+
+
+
+		<div class="right">
+			<div class="result">
+				<div class="search_result-elem">
+
+					<img src="./img/hotel.PNG" alt="">
+
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+				<div class="search_result-elem">
+					<img src="./img/hotel.PNG" alt="">
+					<div class="result_elem-content">
+						<div>
+							<div class="offer-info-name">
+								<span>alfavito</span>
+								Hotel
+							</div>
+							<div class="content-adress">
+								street
+							</div>
+							<div class="content-text">
+
+							</div>
+							<div class="contenr-mark">
+
+							</div>
+						</div>
+						<div class="offer-info-price">
+							<span>300$</span>
+							200$
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/libs.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<title>Express handlebars</title>
+	<title>Simple login</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+	{{!-- <script>
+		$(document).ready(function () {
+			
+			$(".search_item-location").on('input', (e) => {
+				console.log(e.target.value);
+				let city = e.target.value;
+
+				$.post("http://localhost:3000/login", { city: city }, function (data) {
+					if (data === 'done') {
+						alert("login success");
+					}
+				});
+			});
+		});
+	</script> --}}
+</head>
+
+<body>
+
+
+
+	<div class="search_item-location">
+		<img src="./img/geo.svg" alt="">
+		<input type="text" autocomplete="none">
+		<div class="search_exit">X</div>
+		<!-- !location res -->
+		<div class="location-result">
+			<ul>
+				{{{body}}}
+
+				
+			</ul>
+		</div>
+	</div> 
+</body>
+
+</html>
+
+{{!-- <div class="search_item-location">
+		<img src="./img/geo.svg" alt="">
+		<input type="text" autocomplete="none">
+		<div class="search_exit">X</div>
+		<!-- !location res -->
+		<div class="location-result">
+			<ul>
+				{{{body}}
+
+				
+			</ul>
+		</div>
+	</div> --
+	  {{!-- // $(".search_item-location input").on("input", (e) => {
+// 	console.log(e.target.value);
+
+// $(".search_item-location input").on("input", (e) => {
+// 	let str = e.target.value;
+// 	let search = $(".search_item-location input");
+// 	if (search.val().length > 0) {
+
+// 		let correct = 0;
+// 		[...$(".location-result li")].forEach(item => {
+// 			let resValue = item.textContent.toLowerCase();
+// 			if (resValue.includes(e.target.value.toLowerCase())) {
+// 				item.style.display = "flex";
+// 				correct++;
+
+// 			} else {
+// 				item.style.display = "none";
+
+// 			}
+
+// 		});
+
+
+// }); --}}

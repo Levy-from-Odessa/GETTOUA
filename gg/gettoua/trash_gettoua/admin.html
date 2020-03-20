@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./styles/style.css">
+
+	<link rel="stylesheet"
+		href="./Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/css/pickmeup.css"
+		type="text/css" />
+
+	<script type="text/javascript"
+		src="./Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/Simple-jQuery-Calendar-Date-Picker-Plugin-PickMeUp/js/pickmeup.js">
+	</script>
+
+
+
+
+	<title>Gettoua</title>
+</head>
+
+<body>
+	<div class="returnhome">
+	</div>
+	<header>
+
+		<div class="logo">
+			<img src="./img/logo.PNG" alt="">
+			<div class="triangle_logo"> </div>
+		</div>
+
+		<div class="partner">
+			<span>Hello, Dear Partner!</span>
+
+		</div>
+		<div class="enter">
+			<button class="btn-enter">log out</button>
+
+
+		</div>
+	</header>
+
+	<div class="sales">
+		<div class="sale_item active">
+			<div class="sale_item-title">
+				23
+			</div>
+			<div class="sale_item-info">
+				dsadasfsa
+			</div>
+		</div>
+		<div class="sale_item finish">
+			<div class="sale_item-title">
+				23
+			</div>
+			<div class="sale_item-info ">
+				dsadasfsa
+			</div>
+		</div>
+		<div class="sale_item total-sale">
+			<div class="sale_item-title">
+				23
+			</div>
+			<div class="sale_item-info">
+				dsadasfsa
+			</div>
+		</div>
+		<div class="sale_item total-balance">
+			<div class="sale_item-title">
+				23
+			</div>
+			<div class="sale_item-info">
+				dsadasfsa
+			</div>
+		</div>
+
+	</div>
+
+	<div class="content">
+		<div class="properties">
+
+			<ul class='menu'>
+				<h1>menu</h1>
+				<li><a href="#home">Home</a></li>
+				<li><a href="#news">News</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</div>
+		<div class="right">
+			<script type="text/javascript">
+				function fAddRowMain() {
+					var index = $("table tbody tr:last-child").index();
+					var row = ' <tr id="' + index + 1 + '">' +
+						'<input type="hidden" name="pos[]" value="' + index + 1 + '">' +
+						'<input type="hidden" name="fblock[]" value="' + index + 1 + '">' +
+						' <input type="hidden" name="fpos[]" value="' + 0 + '">' +
+						'<input type="hidden" name="client[]" value="0">' +
+						'<input type="hidden" name="isnew[]" value="1">' +
+						'<input type="hidden" name="id[]" value="0">' +
+						'<input type="hidden" name="subid[]" value="0">' +
+
+						'<td colspan="2"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_name[]" value=""> <button type="button" class="btn btn-success btn-circle btn-sm"  onclick="fAddRowSub(this)">+</button> <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="fDelRow(this)">-</button></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_phone[]" value=""></td> ' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_birth[]" value=""></td>' +
+						' <td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_passport[]" value=""></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_passport_valid[]" value=""></td>' +
+						'</tr>';
+					$("table").append(row);
+					//   $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+					//   $('[data-toggle="tooltip"]').tooltip();
+				}
+
+				function fAddRowSub(elmnt) {
+					var index = $("table tbody tr:last-child").index();
+					var parent_index = $(elmnt).parents("tr").attr('id');
+					var parent_isnew = $(elmnt).parents("tr").find("input[name='isnew[]']").val();
+					var parent_id = $(elmnt).parents("tr").find("input[name='id[]']").val();
+					var parent_last_sub_pos = '0';
+					var last_sub_tr = null;
+
+					if (parent_isnew == "1") {
+						parent_id = parent_index;
+					}
+
+					$("table tbody tr").each(function () {
+						if ($(this).find("input[name='subid[]']").val() == parent_index) {
+							parent_last_sub_pos = $(this).find("input[name='fpos[]']").val();
+							last_sub_tr = $(this);
+						}
+					});
+
+					parent_last_sub_pos = Number(parent_last_sub_pos);
+					index = Number(index);
+					parent_index = Number(parent_index);
+					parent_id = Number(parent_id);
+
+					var row = ' <tr id="' + index + 1 + '">' +
+						'<input type="hidden" name="pos[]" value="' + index + 1 + '">' +
+						'<input type="hidden" name="fblock[]" value="' + parent_index + '">' +
+						' <input type="hidden" name="fpos[]" value="' + parent_last_sub_pos + '">' +
+						'<input type="hidden" name="client[]" value="0">' +
+						'<input type="hidden" name="isnew[]" value="1">' +
+						'<input type="hidden" name="id[]" value="0">' +
+						'<input type="hidden" name="subid[]" value="' + parent_id + '">' +
+
+						'<td colspan="1"> <button type="button" class="btn btn-danger btn-circle btn-sm" onclick="fDelSubRow(this)">-</button></td>' +
+						' <td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text" name="client_name[]" value=""></td> ' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text" name="client_phone[]" value=""></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_birth[]" value=""></td>' +
+						' <td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_passport[]" value=""></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="client_passport_valid[]" value=""></td>' +
+						'</tr>';
+					//   var listItemId = $(this).closest('tr');
+					if (parent_last_sub_pos > 0) {
+						$(last_sub_tr).after(row);
+					} else {
+						$(elmnt).parents("tr").after(row);
+					}
+				}
+
+				// Delete row on delete button click
+				function fDelSubRow(Element) {
+					$(Element).parents("tr").remove();
+				}
+
+				// Delete row on delete button click
+				function fDelRow(elmnt) {
+					var parent_index = $(elmnt).parents("tr").attr('id');
+					var parent_isnew = $(elmnt).parents("tr").find("input[name='isnew[]']").val();
+					var parent_id = $(elmnt).parents("tr").find("input[name='id[]']").val();
+					var parent_last_sub_pos = '0';
+					var last_sub_tr = null;
+
+					if (parent_isnew == "1") {
+						parent_id = parent_index;
+					}
+
+					$("table tbody tr").each(function () {
+						if ($(this).find("input[name='subid[]']").val() == parent_index) {
+							$(this).remove();
+						}
+					});
+
+					$(elmnt).parents("tr").remove();
+				}
+
+
+				function fAddRowSummSub() {
+					var index = $("table tbody tr:last-child").index();
+					var row = ' <tr id="' + index + 1 + '">' +
+						'<td colspan="6"></td>' +
+						'</tr>';
+					$("table").append(row);
+				}
+
+				function fAddRowSummMain() {
+					var index = $("table tbody tr:last-child").index();
+					var row = ' <tr id="' + index + 1 + '">' +
+						'<td colspan="6"></td>' +
+						'</tr>';
+					$("table").append(row);
+				}
+
+
+				function fAddServToAll() {
+					//   var c = $("table tr:first td").length;
+					//  //   $("table tr:first").append("<td><a href=''>Delete</a> Col "+(c+1)+"</td>");
+					//  $("table tr:gt(0)").append("<td>Col</td>");
+					var tcolspan = $("#thead-tr1-th_service").attr('colspan');
+					tcolspan = Number(tcolspan);
+
+					var row =
+						'<th rowspan="2" data-service_id=\"0\"> <button type=\"button\" class=\"btn btn-danger btn-circle btn-sm\" onclick=\"fDelSubRow(this)\">-</button> <button type=\"button\" class=\"btn btn-info btn-circle btn-sm\" onclick=\"fDelSubRow(this)\">S</button>' +
+						' <input type="hidden" name="service' + (tcolspan + 1) + '" value="0">' +
+						' <input type="hidden" name="service_type' + (tcolspan + 1) + '" value="0">' +
+						'</th>';
+
+					$("table thead tr").eq(1).append(row);
+
+					$("table tbody tr").append('<td><input type=\"checkbox\" name="service' + (tcolspan + 1) + '[]" ></td>');
+
+					$("#thead-tr1-th_service").attr("colspan", tcolspan + 1);
+				}
+
+
+
+				function ftest() {
+					var index = $("table")[0].outerHTML;
+
+					$("#ffff").val(index);
+				}
+
+
+				function fRowNew() {
+					$(this).attr("disabled", "disabled");
+					var index = $("table tbody tr:last-child").index();
+					var row = ' <tr id="1">' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="manager[]" value=""><input type="hidden" name="id[]" value="0"></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text"  name="role_name[]" value="" ></td> ' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text" name="mobilephone[]" value="" ></td>' +
+						'<td class="tabledit-view-mode"><input class="tabledit-input form-control form-control-sm" type="text" name="phone1[]" value="" ></td>' +
+						'<td style="white-space: nowrap; width: 1%;"> <div class="tabledit-toolbar btn-toolbar" style="text-align: left;"> <div class="btn-group btn-group-sm" style="float: none;"> <button type="button" class="tabledit-edit-button btn btn-success" style="float: none;" onclick="fDelTekRow(this)"><span class="mdi mdi-delete-forever"></span> </button> </div> </div> </td>' +
+						'</tr>';
+					$("table").append(row);
+					$("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+					$('[data-toggle="tooltip"]').tooltip();
+				};
+
+				function fRowEdit(Element) {
+					$(this).parents("tr").find("td:not(:last-child)").each(function () {
+						$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+					});
+					$(this).parents("tr").find(".add, .edit").toggle();
+					$(".add-new").attr("disabled", "disabled");
+				};
+			</script>
+
+
+			<div class="row">
+
+
+
+
+
+
+
+
+				<form action="http://htl/partner/orders" method="post">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+
+								<div class="table table-bordered">
+									<table class="table table-centered mb-0" id="btn-editable">
+										<thead>
+											<tr>
+												<th colspan="6" rowspan="2">Client</th>
+												<th id="thead-tr1-th_service" colspan="4">Services</th>
+											</tr>
+											<tr id="thead-tr2-th">
+
+												<th rowspan="2" data-service_id="0"> <button type="button"
+														class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-</button> <button type="button"
+														class="btn btn-info btn-circle btn-sm"
+														onclick="fDelSubRow(this)">S</button> <input type="hidden"
+														name="service1" value="0"> <input type="hidden"
+														name="service_type1" value="0"></th>
+												<th rowspan="2" data-service_id="0"> <button type="button"
+														class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-</button> <button type="button"
+														class="btn btn-info btn-circle btn-sm"
+														onclick="fDelSubRow(this)">S</button> <input type="hidden"
+														name="service2" value="0"> <input type="hidden"
+														name="service_type2" value="0"></th>
+												<th rowspan="2" data-service_id="0"> <button type="button"
+														class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-</button> <button type="button"
+														class="btn btn-info btn-circle btn-sm"
+														onclick="fDelSubRow(this)">S</button> <input type="hidden"
+														name="service3" value="0"> <input type="hidden"
+														name="service_type3" value="0"></th>
+												<th rowspan="2" data-service_id="0"> <button type="button"
+														class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-</button> <button type="button"
+														class="btn btn-info btn-circle btn-sm"
+														onclick="fDelSubRow(this)">S</button> <input type="hidden"
+														name="service4" value="0"> <input type="hidden"
+														name="service_type4" value="0"></th>
+											</tr>
+											<tr>
+												<th colspan="2">Name</th>
+												<th>Phone</th>
+												<th>Birth</th>
+												<th>Passport</th>
+												<th>Valid</th>
+
+
+
+											</tr>
+										</thead>
+
+										<tbody>
+
+											<tr id="1">
+												<input type="hidden" name="pos[]" value="1">
+												<input type="hidden" name="fblock[]" value="1">
+												<input type="hidden" name="fpos[]" value="0">
+												<input type="hidden" name="client[]" value="1">
+												<input type="hidden" name="isnew[]" value="0">
+												<input type="hidden" name="id[]" value="1">
+												<input type="hidden" name="subid[]" value="0">
+												<td colspan="2"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_name[]" value="client name">
+													<button type="button" class="btn btn-success btn-circle btn-sm"
+														onclick="fAddRowSub(this)">+
+													</button>
+													<button type="button" class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelRow(this)">-
+													</button>
+												</td>
+
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_phone[]" value="client_phone"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_birth[]" value="client_birth"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport[]" value="client_passport"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport_valid[]" value="client_passport_valid">
+												</td>
+
+												<td><input type="checkbox" name="service1[]"></td>
+												<td><input type="checkbox" name="service2[]"></td>
+												<td><input type="checkbox" name="service3[]"></td>
+												<td><input type="checkbox" name="service4[]"></td>
+											</tr>
+
+
+											<tr id="2">
+												<input type="hidden" name="pos[]" value="2">
+												<input type="hidden" name="fblock[]" value="1">
+												<input type="hidden" name="fpos[]" value="1">
+												<input type="hidden" name="client[]" value="2">
+												<input type="hidden" name="isnew[]" value="0">
+												<input type="hidden" name="id[]" value="2">
+												<input type="hidden" name="subid[]" value="1">
+												<td colspan="1">
+													<button type="button" class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-
+													</button>
+												</td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_name[]" value="client name"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_phone[]" value="client_phone"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_birth[]" value="client_birth"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport[]" value="client_passport"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport_valid[]" value="client_passport_valid">
+												</td>
+
+												<td><input type="checkbox" name="service1[]"></td>
+												<td><input type="checkbox" name="service2[]"></td>
+												<td><input type="checkbox" name="service3[]"></td>
+												<td><input type="checkbox" name="service4[]"></td>
+											</tr>
+
+
+
+
+
+
+
+
+
+
+
+											<tr id="3">
+												<input type="hidden" name="pos[]" value="3">
+												<input type="hidden" name="fblock[]" value="2">
+												<input type="hidden" name="fpos[]" value="0">
+												<input type="hidden" name="client[]" value="5">
+												<input type="hidden" name="isnew[]" value="0">
+												<input type="hidden" name="id[]" value="3">
+												<input type="hidden" name="subid[]" value="0">
+												<td colspan="2"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_name[]" value="client name">
+													<button type="button" class="btn btn-success btn-circle btn-sm"
+														onclick="fAddRowSub(this)">+
+													</button>
+													<button type="button" class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelRow(this)">-
+													</button>
+												</td>
+
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_phone[]" value="client_phone"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_birth[]" value="client_birth"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport[]" value="client_passport"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport_valid[]" value="client_passport_valid">
+												</td>
+
+												<td><input type="checkbox" name="service1[]"></td>
+												<td><input type="checkbox" name="service2[]"></td>
+												<td><input type="checkbox" name="service3[]"></td>
+												<td><input type="checkbox" name="service4[]"></td>
+											</tr>
+
+
+											<tr id="4">
+												<input type="hidden" name="pos[]" value="4">
+												<input type="hidden" name="fblock[]" value="2">
+												<input type="hidden" name="fpos[]" value="1">
+												<input type="hidden" name="client[]" value="6">
+												<input type="hidden" name="isnew[]" value="0">
+												<input type="hidden" name="id[]" value="4">
+												<input type="hidden" name="subid[]" value="3">
+												<td colspan="1">
+													<button type="button" class="btn btn-danger btn-circle btn-sm"
+														onclick="fDelSubRow(this)">-
+													</button>
+												</td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_name[]" value="client name"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_phone[]" value="client_phone"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_birth[]" value="client_birth"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport[]" value="client_passport"></td>
+												<td class="tabledit-view-mode"><input
+														class="tabledit-input form-control form-control-sm" type="text"
+														name="client_passport_valid[]" value="client_passport_valid">
+												</td>
+
+												<td><input type="checkbox" name="service1[]"></td>
+												<td><input type="checkbox" name="service2[]"></td>
+												<td><input type="checkbox" name="service3[]"></td>
+												<td><input type="checkbox" name="service4[]"></td>
+											</tr>
+
+
+										</tbody>
+										<tr id="31"><input type="hidden" name="pos[]" value="31"><input type="hidden"
+												name="fblock[]" value="31"> <input type="hidden" name="fpos[]"
+												value="0"><input type="hidden" name="client[]" value="0"><input
+												type="hidden" name="isnew[]" value="1"><input type="hidden" name="id[]"
+												value="0"><input type="hidden" name="subid[]" value="0">
+											<td colspan="2"><input class="tabledit-input form-control form-control-sm"
+													type="text" name="client_name[]" value=""> <button type="button"
+													class="btn btn-success btn-circle btn-sm"
+													onclick="fAddRowSub(this)">+</button> <button type="button"
+													class="btn btn-danger btn-circle btn-sm"
+													onclick="fDelRow(this)">-</button></td>
+											<td class="tabledit-view-mode"><input
+													class="tabledit-input form-control form-control-sm" type="text"
+													name="client_phone[]" value=""></td>
+											<td class="tabledit-view-mode"><input
+													class="tabledit-input form-control form-control-sm" type="text"
+													name="client_birth[]" value=""></td>
+											<td class="tabledit-view-mode"><input
+													class="tabledit-input form-control form-control-sm" type="text"
+													name="client_passport[]" value=""></td>
+											<td class="tabledit-view-mode"><input
+													class="tabledit-input form-control form-control-sm" type="text"
+													name="client_passport_valid[]" value=""></td>
+										</tr>
+									</table>
+								</div> <!-- end .table-responsive-->
+							</div> <!-- end card-body -->
+						</div> <!-- end card -->
+					</div> <!-- end col -->
+					<button type="submit" class="btn btn-primary">Save</button>
+
+
+
+					<input type="text" readonly="" data-toggle="modal" data-target="#selectHotelModal"
+						data-whatever="@getbootstrap" data-tsel="3" data-trelationto="3" data-tname="5">
+					<input type="hidden" name="_token" value="V4DVnZ9xvryl8Mvu88zi12cmDzgQ2uHmK47oZGPt">
+				</form>
+
+
+
+</body>
+
+</html>

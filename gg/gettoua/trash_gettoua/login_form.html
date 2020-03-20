@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1</title>
+	<link rel="stylesheet" href="./styles/bootstrap.min.css">
+	<link rel="stylesheet" href="./styles/font-awesome.min.css">
+	<link rel="stylesheet" href="./styles/style.css">
+	<link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="container">
+		<form>
+		
+			<div class='login'>
+				<div class="form-group">
+					<label>login</label>
+					<input name="login[]" class="form-control">
+					<label>password</label>
+					<input name="password[]" class="form-control">
+					
+				</div>
+			</div>
+			<button class="btn btn-success" >
+				Login
+			</button>
+			<button class="btn btn-primary back" >
+				Back
+			</button>
+		</form>
+
+
+		
+			<!-- <script>
+		
+		new Vue({
+			el: '.sample',
+			data: {
+				info: [
+					{
+						name: 'Name',
+						value: '',
+						pattern: /^[a-zA-Z ]{2,30}$/
+					},
+					{
+						name: 'Phone',
+						value: '',
+						pattern: /^[0-9]{7,14}$/
+					},
+					{
+						name: 'Email',
+						value: '',
+						pattern: /.+/
+					},
+					{
+						name: 'Some Field 1',
+						value: '',
+						pattern: /.+/
+					},
+					{
+						name: 'Some Field 2',
+						value: '',
+						pattern: /.+/
+					}
+				],
+				controls: [],
+				formSubmited: false
+			},
+			created(){
+				for(let i = 0; i < this.info.length; i++){
+					this.controls.push({
+						error: !this.info[i].pattern.test(this.info[i].value),
+						activated: this.info[i].value != ''
+					});
+				}
+			},
+			methods: {
+				onInput(index, value){
+					let data = this.info[index].value;// object.value
+					let control = this.controls[index]; // error + activate
+
+					//data.value = value;
+
+					control.error = !data.pattern.test(value);
+					control.activated = true;
+				}
+			},
+			computed: {
+				done(){
+					let done = 0;
+
+					for(let i = 0; i < this.controls.length; i++){
+						if(!this.controls[i].error){
+							done++;
+						}
+					}
+
+					return done;
+				},
+				progressWidth(){
+					return {
+						width: (this.done / this.info.length * 100) + '%'
+					}
+				}
+			}
+		});
+	</script> -->
+</body>
+
+</html>
